@@ -1,0 +1,28 @@
+{
+  "name": "cse341-team-1",
+  "version": "1.0.0",
+  "description": "CSE341 Team 1 Group Project ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodeeo/CSE341-TEAM-1.git"
+  },
+  "author": "Team 1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodeeo/CSE341-TEAM-1/issues"
+  },
+  "homepage": "https://github.com/Rodeeo/CSE341-TEAM-1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }  
+}

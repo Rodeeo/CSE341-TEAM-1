@@ -15,9 +15,9 @@
  
  :root {
 
-   --bs-dkgreen: #073642;
-   --bs-gold: #b58900;
-   --bs-pink: #d33682;
+   --bs-dark: #073642;
+   --bs-primary: #b58900;
+   --bs-danger: #d33682;
    --bs-teal: #2aa198;  
    --bs-white: #fdf6e3;
    --bs-grey: #839496;  
@@ -45,8 +45,8 @@
    font-size: 1rem;
    font-weight: 400;
    line-height: 1.5;
-   color: var(--bs-white);
-   background-color: var(--bs-dkgreen);
+   color: var(--bs-grey);
+   background-color: var(--bs-dark);
    -webkit-text-size-adjust: 100%;
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
  }
@@ -4095,6 +4095,11 @@
    border-top-left-radius: 0;
    border-top-right-radius: 0;
  }
+
+ .img-logo {
+  width: 3em;
+  margin-right: .75em;
+}
  
  .nav {
    display: -ms-flexbox;
@@ -4240,6 +4245,7 @@
    font-size: 1.25rem;
    text-decoration: none;
    white-space: nowrap;
+   color: var(--bs-danger);
  }
  
  .navbar-nav {

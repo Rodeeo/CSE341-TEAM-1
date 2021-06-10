@@ -36,6 +36,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 const timecardRoutes = require("./routes/timecard");
+const authRoutes = require('./routes/auth');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -47,13 +48,17 @@ app.use(
     store: store,
   })
 );
-app.use(timecardRoutes);
 
+app.use(timecardRoutes);
+app.use(authRoutes);
 mongoose
   // Passing options to avoid using deprecated parser
   .connect(MONGODB_URL, options)
   .then((result) => {
-    app.listen(PORT);
+    app.listen(PORT, () => {
+      console.log(`Listening on ${PORT}`);
+      console.log(`http://127.0.0.1:${PORT}`);
+    });
   })
   .catch((err) => {
     console.log(err);

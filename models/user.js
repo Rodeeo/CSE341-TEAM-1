@@ -19,10 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  userId: {
+  organizationId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "User",
+    ref: "Organization",
   },
   // TODO: make sure the above works; below is a failsafe
   /* organizationId: {

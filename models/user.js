@@ -19,11 +19,16 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  // TODO: change this to not require hard-coding organization id
-  organizationId: {
+  userId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  // TODO: make sure the above works; below is a failsafe
+  /* organizationId: {
     type: Number,
     required: true,
-  },
+  }, */
   // TODO: determine role names/hierarchy
   organizationRole: {
     type: String,

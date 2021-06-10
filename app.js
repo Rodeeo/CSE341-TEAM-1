@@ -55,7 +55,10 @@ mongoose
   // Passing options to avoid using deprecated parser
   .connect(MONGODB_URL, options)
   .then((result) => {
-    app.listen(PORT);
+    app.listen(PORT, () => {
+      console.log(`Listening on ${PORT}`);
+      console.log(`http://127.0.0.1:${PORT}`);
+    });
   })
   .catch((err) => {
     console.log(err);

@@ -1,24 +1,29 @@
 <%- include('./includes/head.ejs') %>
-<%- include('./includes/header.ejs') %>
-<div class="card border-primary m-2 float-end" style="max-width: 20rem;">
-  <div class="card-header"><h5>Login</h5></div>
-  <div class="card-body">
-    <form>
-      <div class="form-group">
-        <label for="Email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
-        <label for="Password" class="form-label mt-4">Password</label>
-        <input type="password" class="form-control" id="Password" placeholder="Password">
-        <button type="button" class="btn btn-outline-primary mt-4">Submit</button>
+  <%- include('./includes/header.ejs') %>
+    <div class="card border-primary m-2 float-end" style="max-width: 20rem;">
+      <div class="card-header">
+        <h5>Login</h5>
       </div>
-    </form>
-  </div>
-</div>
-<main>
-  <div class="container">
-    <h1> Home </h1>
-    <p>The begining</p>
-  </div>
-</main>
+      <div class="card-body">
+        <form class="login-form" action="/login" method="POST">
+          <div class="form-group">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="Password" class="form-label mt-4">Password</label> <span class="reset"> <a href="/reset">Forgot password?</a></span>
+            <input type="password" class="form-control" id="Password" placeholder="Password">
+            <button type="submit" class="btn btn-outline-primary mt-4">Login</button>
+          </div>
+        </form>
+        <div class="centered">
+         <span>New to Time App? </span> <a href="/signup">Create an account.</a>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="container">
+        <h1> Home </h1>
+        <p>The begining</p>
+      </div>
+    </main>
 
-<%- include('./includes/footer.ejs') %>
+    <%- include('./includes/footer.ejs') %>

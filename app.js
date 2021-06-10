@@ -8,11 +8,12 @@ const session = require("express-session");
 const mongoConnect = require("./util/database").mongoConnect;
 const MongoDBStore = require("connect-mongodb-session")(session);
 
-// const corsOptions = {
-//     origin: "https://tiempo-team1.herokuapp.com/",
-//     optionsSuccessStatus: 200
-//   };
-//   app.use(cors(corsOptions));
+// V This crashes the app for now V
+/* const corsOptions = {
+  origin: "https://tiempo-team1.herokuapp.com/",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions)); */
 
 const options = {
   useUnifiedTopology: true,
@@ -50,7 +51,7 @@ app.use(timecardRoutes);
 
 mongoose
   // Passing options to avoid using deprecated parser
-  .connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGODB_URL, options)
   .then((result) => {
     app.listen(PORT);
   })

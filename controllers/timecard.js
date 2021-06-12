@@ -28,3 +28,10 @@ exports.totalTime = (req, res, next) => {
     lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE)
   });
 };
+
+exports.aboutTime = (req, res, next) => {
+  res.render('time/about', {
+    pageTitle: 'About',
+    path: '/about',
+  });
+};

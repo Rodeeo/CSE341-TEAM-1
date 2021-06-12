@@ -1,29 +1,38 @@
 <%- include('./includes/head.ejs') %>
   <%- include('./includes/header.ejs') %>
-    <div class="card border-primary m-2 float-end" style="max-width: 20rem;">
+    <div class="card border-primary m-5 col-xs-auto col-sm-auto col-md-auto float-end" style="max-width: 20rem;">
       <div class="card-header">
         <h5>Login</h5>
       </div>
       <div class="card-body">
         <form class="login-form" action="/login" method="POST">
-          <div class="form-group">
+          <br class="form-group">
             <label for="Email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
-            <label for="Password" class="form-label mt-4">Password</label> <span class="reset"> <a href="/reset">Forgot password?</a></span>
+            <label for="Password" class="form-label mt-4">Password</label> 
             <input type="password" class="form-control" id="Password" placeholder="Password">
+            <span class="reset"> <a href="/reset"> Forgot password?</a></span></br>
             <button type="submit" class="btn btn-outline-primary mt-4">Login</button>
-          </div>
         </form>
-        <div class="centered">
+      </div>
+        <div class="centered m-2">
          <span>New to Time App? </span> <a href="/signup">Create an account.</a>
         </div>
       </div>
-    </div>
-    <main>
-      <div class="container">
-        <h1> Home </h1>
-        <p>The begining</p>
-      </div>
-    </main>
+  
+      <div class="container mt-5 col-xs-auto col-sm-auto col-md-auto">
+        <div class="card border-primary m-5 center" style="max-width: 40rem;">
+          <div class="card-header">
+            <h1>Home</h1>
+          </div>
+          <div class="card-body" style="font-size: 2rem;">
+              <p>Welcome to our group project.</p>
+              <p>CSE341 Spring</p>
+              <p>Brother Shawn Porter</p>
+              <p>Chad, Sam, Ruben, & Alain</p>
+          </div>
+  </div>
+  </div>
+
 
     <%- include('./includes/footer.ejs') %>

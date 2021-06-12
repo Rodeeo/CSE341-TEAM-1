@@ -4119,7 +4119,7 @@
  .nav-link {
    display: block;
    padding: 0.5rem 1rem;
-   color: #2aa198;
+   color: var(--bs-dark);
    text-decoration: none;
    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
  }
@@ -6729,7 +6729,7 @@
  }
  
  .link-info:hover, .link-info:focus {
-   color: #1e6fa8;
+   color: #22817a;
  }
  
  .link-warning {
@@ -6737,7 +6737,7 @@
  }
  
  .link-warning:hover, .link-warning:focus {
-   color: #a23c12;
+   color: #1e6fa8;
  }
  
  .link-danger {
@@ -6745,7 +6745,7 @@
  }
  
  .link-danger:hover, .link-danger:focus {
-   color: #a92b68;
+   color: #fdf6e3;
  }
  
  .link-light {

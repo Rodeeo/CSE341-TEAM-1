@@ -4,22 +4,21 @@
       <div class="container">
         <div class="container-form">
           <h1> Total Time </h1>
-          <form action="">
+          <form action="totaltime" method="GET">
             <div class="mb-3">
               <label for="startDate" class="form-label">Start date</label>
-              <input type="date" class="form-control" name="startDate" id="startDate">
+              <input type="date" class="form-control" name="startDate" id="startDate" value="<%= date1 %>">
             </div>
             <div class="mb-3">
               <label for="endDate" class="form-label">End date</label>
-              <input type="date" class="form-control" name="endDate" id="endDate">
+              <input type="date" class="form-control" name="endDate" id="endDate" value="<%= date2 %>">
             </div>
             <div class="mb-3">
-              <button type="button" class="btn btn-primary">Search</button> 
+              <button type="submit" class="btn btn-primary">Search</button> 
             </div>
-            
           </form>
           <div class="mb-3">
-            <span>Total hours:</span>
+            <span>Total hours: <%= totalHours %> </span>
           </div>
         </div>
         <h3>Details</h3>
@@ -43,7 +42,7 @@
               <% } %> 
             </tbody>
           </table>
-          <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+          <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage,url:'&startDate='+date1+'&endDate='+date2}) %>
       </div>
     </main>
 

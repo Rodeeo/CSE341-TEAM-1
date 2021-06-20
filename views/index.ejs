@@ -1,27 +1,6 @@
 <%- include('./includes/head.ejs') %>
   <%- include('./includes/header.ejs') %>
-  <div class="float-right">
-    <div class="card border-primary m-5 col-xs-auto col-sm-auto col-md-auto " style="max-width: 20rem;">
-      <div class="card-header">
-        <h5>Login</h5>
-      </div>
-      <div class="card-body">
-        <form class="login-form" action="http://127.0.0.1:5000/login" id="loginForm">
-          <br class="form-group">
-            <label for="Email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
-            <label for="Password" class="form-label mt-4">Password</label> 
-            <input type="password" class="form-control" id="Password" placeholder="Password">
-            <span class="reset"> <a href="/reset"> Forgot password?</a></span></br>
-            <button type="submit" class="btn btn-outline-primary mt-4">Login</button>
-        </form>
-      </div>
-        <div class="centered m-2">
-         <span>New to Time App? </span> <a href="/signup">Create an account.</a>
-        </div>
-      </div>
-    </div>
-    <div class="mt-5">
+    <div class="d-flex p-4 justify-content-center">
       <div class="card border-primary m-5 center" style="min-width: 25rem; max-width: 40rem;">
         <div class="card-header">
           <h1>Home</h1>

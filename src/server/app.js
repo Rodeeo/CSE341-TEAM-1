@@ -37,13 +37,13 @@ const store = new MongoDBStore({
 
 const app = express();
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", process.cwd() + '/src/frontend/views');
 
-const timecardRoutes = require("./routes/timecard");
+const timecardRoutes = require("../frontend/routes/timecard");
 const authRoutes = require('./routes/auth');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../frontend/public")));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(

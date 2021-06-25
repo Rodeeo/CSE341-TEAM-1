@@ -5,8 +5,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const mongoConnect = require("./util/database").mongoConnect;
+// const mongoConnect = require("./util/database").mongoConnect;
 const MongoDBStore = require("connect-mongodb-session")(session);
+const { config } = require('../../config');
+
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const DB_NAME = config.dbName;
 
 // V This crashes the app for now V
 /* const corsOptions = {
@@ -23,11 +28,10 @@ const options = {
   family: 4,
 };
 
-const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
-const MONGODB_URL = "mongodb+srv://Bob:Bob123@tiempo-team1.hrin5.mongodb.net/Tiempo-Team1";
+const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const store = new MongoDBStore({
-  uri: MONGODB_URL,
+  uri: MONGODB_URI,
   collection: "sessions",
 });
 
@@ -62,11 +66,11 @@ app.use(timecardRoutes);
 app.use(authRoutes);
 mongoose
   // Passing options to avoid using deprecated parser
-  .connect(MONGODB_URL, options)
+  .connect(MONGODB_URI, options)
   .then((result) => {
-    app.listen(PORT, () => {
-      console.log(`Listening on ${PORT}`);
-      console.log(`http://127.0.0.1:${PORT}`);
+    app.listen(config.port, () => {
+      console.log(`Listening on ${config.port}`);
+      console.log(`http://127.0.0.1:${config.port}`);
     });
   })
   .catch((err) => {

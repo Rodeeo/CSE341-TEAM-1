@@ -12,5 +12,7 @@ router.get('/enterTime', timecardController.enterTime);
 router.get('/totalTime', timecardController.totalTime);
 router.get('/totalTime/:date1/:date2', timecardController.totalTime);
 router.get('/about', timecardController.aboutTime);
+router.get('/login', timecardController.loginTime);
+router.get('/signup', timecardController.signupTime);
 
 module.exports = router;

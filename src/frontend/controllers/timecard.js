@@ -79,3 +79,21 @@ exports.aboutTime = (req, res, next) => {
     path: '/about',
   });
 };
+exports.loginTime = (req, res, next) => {
+  res.render('auth/login', {
+    pageTitle: 'Login',
+    path: '/login',
+  });
+};
+exports.signupTime = (req, res, next) => {
+  res.render('auth/signup', {
+    pageTitle: 'Signup',
+    path: '/signup',
+  });
+};
+exports.resetTime = (req, res, next) => {
+  res.render('auth/reset', {
+    pageTitle: 'Reset',
+    path: '/reset',
+  });
+};

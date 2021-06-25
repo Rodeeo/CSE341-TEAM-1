@@ -13,9 +13,10 @@ exports.getSignup = (req, res, next) => {
 exports.login = (req, res, next) => {
     const email = req.body.email;
   const password = req.body.password;
-//   console.log(email);
+  console.log(email);
 
   let loadedUser;
+  console.log(loadedUser);
   User.findOne({ userEmail: email })
     .then(user => {
       if (!user) {
@@ -63,15 +64,19 @@ exports.signup = (req, res, next) => {
   const name = req.body.name;
   const lastName = req.body.lastName;
   const password = req.body.password;
-  console.log(email, name, lastName, password)
+  const organizationRole = req.body.organizationRole;
+  const organizationId = req.body.organizationId;
+  console.log(email, name, lastName, password, organizationRole, organizationId)
   bcrypt
     .hash(password, 12)
     .then(hashedPw => {
       const user = new User({
         userEmail: email,
         userPassword: hashedPw,
-        userName: name,
-        userLastName: lastName
+        userFirstName: name,
+        userLastName: lastName,
+        organizationRole: organizationRole,
+        organizationId: organizationId,
       });
       return user.save();
     })

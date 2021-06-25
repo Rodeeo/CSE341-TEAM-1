@@ -1,37 +1,90 @@
-<%- include('../includes/head.ejs') %>
-    <%- include('../includes/header.ejs') %>
-        <div class="float-right">
-            <div class="card border-primary m-5 col-xs-auto col-sm-auto col-md-auto " style="max-width: 20rem;">
-                <div class="card-header">
-                    <h5>Signup</h5>
-                </div>
-                <div class="card-body">
-                    <form class="login-form" action="http://127.0.0.1:5000/signup" id="signup-Form">
-                        <br class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name"  placeholder="Enter your name">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="lastName" class="form-control" id="lastName"  placeholder="Enter your last name">
-                        <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="Email"  placeholder="Enter email">
-                        <label for="Password" class="form-label mt-4">Password</label>
-                        <input type="password" class="form-control" id="Password" placeholder="Password">
-                        <button type="submit" class="btn btn-outline-primary mt-4">Signup</button>
-                    </form>
-                </div>
-                <div class="centered m-2">
-                    <span>Already hava an account? </span> <a href="/">Login.</a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-5">
-            <div class="card border-primary m-5 center" style="min-width: 25rem; max-width: 40rem;">
+<%- include('../includes/head.ejs') %> <%- include('../includes/header.ejs') %>
 
-            </div>
-        </div>
+<script src="/js/signup.js" defer></script>
 
+<div class="float-right">
+  <div
+    class="card border-primary m-5 col-xs-auto col-sm-auto col-md-auto"
+    style="max-width: 20rem"
+  >
+    <div class="card-header">
+      <h5>Sign up</h5>
+    </div>
+    <div class="card-body">
+      <form class="login-form" id="signup-Form">
+        <br class="form-group" />
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+        />
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+        type="lastName"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        placeholder="Enter your last name"
+        />
+        <input
+        id="admin"
+        type="radio"
+        class="radio-inline"
+        name="organizationRole"
+        value="Administrator"
+        />
+        <label for="admin" class="form-label">Administrator</label>
+        <input
+        id="employee"
+        type="radio"
+        class="radio-inline"
+        name="organizationRole"
+        value="Employee"
+        />
+        <label for="employee" class="form-label">Employee</label>
+        <label for="Email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="Email"
+          name="email"
+          placeholder="Enter email"
+        />
+        <label for="organizationId" class="form-label mt-4">Organization ID</label>
+        <input
+          type="text"
+          class="form-control"
+          id="organizationId"
+          name="organizationId"
+          placeholder="1234"
+        />
+        <label for="Password" class="form-label mt-4">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="Password"
+          name="password"
+          placeholder="Password"
+        />
+        <button type="submit" class="btn btn-outline-primary mt-4">
+          Sign up
+        </button>
+      </form>
+    </div>
+    <div class="centered m-2">
+      <span>Already have an account? </span> <a href="/login">Login.</a>
+    </div>
+  </div>
+</div>
+<div class="mt-5">
+  <div
+    class="card border-primary m-5 center"
+    style="min-width: 25rem; max-width: 40rem"
+  ></div>
+</div>
 
-
-
-
-        <%- include('../includes/footer.ejs') %>
+<%- include('../includes/footer.ejs')
+%>

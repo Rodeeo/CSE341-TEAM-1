@@ -11,24 +11,24 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  userFirstname: {
+  userFirstName: {
     type: String,
     required: true,
   },
-  userLastname: {
+  userLastName: {
     type: String,
     required: true,
   },
-  organizationId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "Organization",
-  },
+  // organizationId: {
+  //   type: Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: "Organization",
+  // },
   // TODO: make sure the above works; below is a failsafe
-  /* organizationId: {
+  organizationId: {
     type: Number,
     required: true,
-  }, */
+  },
   // TODO: determine role names/hierarchy
   organizationRole: {
     type: String,

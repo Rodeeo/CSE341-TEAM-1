@@ -13,7 +13,7 @@ exports.enterTime = (req, res, next) => {
 };
 exports.totalTime = (req, res, next) => {
   const page = +req.query.page || 1;
-  var dataJson = require('../models/data.json');
+  var dataJson = require('../../server/models/data.json');
   const date1 = req.query.startDate;
   const date2 = req.query.endDate;
   let totalHours=0;

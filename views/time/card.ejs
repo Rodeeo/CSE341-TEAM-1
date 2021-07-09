@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/header.ejs') %>
+<main>
+    <div style="max-width: 400px;margin-left: auto;margin-right: auto;">
+        <% if (errorMessage) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= errorMessage %>
+              </div>
+        <% } %>
+        <h1><%=pageTitle%></h1>
+        <form action="/time/card" method="POST">
+            <div class="form-group">
+                <label for="activity">Activity</label>
+                <textarea name="activity" class="form-control" id="activity" cols="30" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="activity">Date</label>
+                <input type="date" class="form-control" name="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="activity">Duration (hours)</label>
+                <input type="number" class="form-control" name="duration" id="duration" min="1" max="24" required>
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn btn-primary" style="margin-top: 2rem;">Save</button>
+        </form>
+    </div>
+</main>
+<%- include('../includes/footer.ejs') %>

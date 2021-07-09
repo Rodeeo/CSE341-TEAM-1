@@ -1,37 +1,47 @@
 <%- include('../includes/head.ejs') %>
-    <%- include('../includes/header.ejs') %>
-        <div class="float-right">
-            <div class="card border-primary m-5 col-xs-auto col-sm-auto col-md-auto " style="max-width: 20rem;">
-                <div class="card-header">
-                    <h5>Signup</h5>
-                </div>
-                <div class="card-body">
-                    <form class="login-form" action="http://127.0.0.1:5000/signup" id="signup-Form">
-                        <br class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name"  placeholder="Enter your name">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="lastName" class="form-control" id="lastName"  placeholder="Enter your last name">
-                        <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="Email"  placeholder="Enter email">
-                        <label for="Password" class="form-label mt-4">Password</label>
-                        <input type="password" class="form-control" id="Password" placeholder="Password">
-                        <button type="submit" class="btn btn-outline-primary mt-4">Signup</button>
-                    </form>
-                </div>
-                <div class="centered m-2">
-                    <span>Already hava an account? </span> <a href="/">Login.</a>
-                </div>
+<%- include('../includes/header.ejs') %>
+<main>
+  <div style="max-width: 400px;margin-left: auto;margin-right: auto;">
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form" action="/auth/signup" method="POST">
+            <h1>Sign Up</h1>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" 
+                class="form-control <%= validationErrors.find(e => e.param === 'name') ? 'invalid' : '' %>" aria-describedby="emailHelp" 
+                placeholder="Enter Name"
+                value="<%= oldInput.name %>"
+                >
+              </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" name="email" 
+              class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" 
+              aria-describedby="emailHelp" 
+              placeholder="Enter email"
+              value="<%= oldInput.email %>"
+              >
             </div>
-        </div>
-        <div class="mt-5">
-            <div class="card border-primary m-5 center" style="min-width: 25rem; max-width: 40rem;">
-
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" 
+              class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>" 
+              placeholder="Password"
+              value="<%= oldInput.password %>"
+              >
             </div>
-        </div>
-
-
-
-
-
-        <%- include('../includes/footer.ejs') %>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" 
+                class="form-control  <%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>" 
+                placeholder="Password"
+                value="<%= oldInput.confirmPassword %>"
+                >
+              </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn btn-primary">Signup</button>
+          </form>
+    </main>
+    <%- include('../includes/footer.ejs') %>

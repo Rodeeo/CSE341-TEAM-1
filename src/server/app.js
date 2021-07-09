@@ -28,8 +28,8 @@ const options = {
   family: 4,
 };
 
-const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
-
+// const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
+const MONGODB_URI = "mongodb+srv://Bob:Bob123@tiempo-team1.hrin5.mongodb.net/Tiempo-Team1"
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
@@ -76,4 +76,5 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
+    console.log("no se pudo conectar con la base de datos :(")
   });

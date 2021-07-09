@@ -4,6 +4,12 @@ const ITEMS_PER_PAGE = 10;
 const {
   validationResult
 } = require('express-validator/check');
+exports.aboutTime = (req, res, next) => {
+  res.render('time/about', {
+    pageTitle: 'About',
+    path: '/about',
+  });
+};
 exports.getCard = (req, res, next) => {
   res.render('time/card', {
     path: '/card',

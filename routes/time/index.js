@@ -14,6 +14,7 @@ router.post('/card',
   ],
 isAuth, timeController.postCard);
 router.get('/total', isAuth, timeController.getTotal);
+router.get('/about', isAuth, timeController.aboutTime);
 //router.get('/card', isAuth, timeController.getCard);
 //router.post('/cart-delete-item', isAuth, shopController.postCartDeleteProduct);
 //router.post('/create-order', isAuth, shopController.postOrder);

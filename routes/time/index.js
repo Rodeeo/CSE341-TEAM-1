@@ -13,6 +13,8 @@ router.post('/card',
       .trim()
   ],
 isAuth, timeController.postCard);
+router.get('/total', isAuth, timeController.getTotal);
+//router.get('/card', isAuth, timeController.getCard);
 //router.post('/cart-delete-item', isAuth, shopController.postCartDeleteProduct);
 //router.post('/create-order', isAuth, shopController.postOrder);
 //router.get('/orders', isAuth, shopController.getOrders);

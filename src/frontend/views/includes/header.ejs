@@ -1,3 +1,43 @@
-<header>    
-    <%- include('../includes/nav.ejs') %>
-</header>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container-fluid">
+        <img class="img-logo" src="../images/logo-pink.png" alt="Tiempo logo"/>
+        <a class="navbar-brand" href="/"><h1 class="text-danger">Tiempo</h1></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/"
+                >Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="entertime">Enter Time</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="totaltime">Total Time</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About</a>
+            </li>
+          </ul>
+          <div class="text-success" style="max-width: 45rem">
+            <a href="/login" class="btn-primary">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>

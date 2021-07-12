@@ -74,15 +74,14 @@ exports.getTotal = (req, res, next) => {
     userId: req.user._id
   }).
   then(times => {
+    // TODO: this solution is pretty crude
+    let d1 = new Date('January 1, 2000 00:00:00');
+    let d2 = new Date('January 1, 2099 00:00:00');
+    if (date1 != undefined && date2 != undefined) {
+      d1 = new Date(date1);
+      d2 = new Date(date2);
+    }
     times = times.filter(e => {
-      // TODO: fix pagination (unsure why it breaks after changing pages)
-      // TODO: this solution is pretty crude
-      let d1 = new Date('January 1, 2000 00:00:00');
-      let d2 = new Date('January 1, 2099 00:00:00');
-      if (date1 != undefined && date2 != undefined) {
-        d1 = new Date(date1);
-        d2 = new Date(date2);
-      }
       let st = new Date(e.date);
       if (st >= d1 && st <= d2) {
         return true;
@@ -99,8 +98,8 @@ exports.getTotal = (req, res, next) => {
       pageTitle: 'Total Time',
       path: '/total',
       data: data,
-      date1: date1,
-      date2: date2,
+      date1: d1,
+      date2: d2,
       totalHours: totalHours,
       currentPage: page,
       hasNextPage: ITEMS_PER_PAGE * page < totalItems,

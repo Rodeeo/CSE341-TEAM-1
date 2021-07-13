@@ -64,24 +64,24 @@ exports.postCard = (req, res, next) => {
 };
 exports.getTotal = (req, res, next) => {
   const page = +req.query.page || 1;
-  const date1 = req.query.startDate;
-  const date2 = req.query.endDate;
+  let date1 = req.query.startDate;
+  let date2 = req.query.endDate;
   let totalItems = 0
   let totalHours = 0;
   let data = [];
-  
+
   Time.find({
     userId: req.user._id
   }).
   then(times => {
     // TODO: this solution is pretty crude
-    let year = new Date().getFullYear();
-    let d1 = new Date(year,01,01);
-    let d2 = new Date(year,12,31);
-    if (date1 != undefined && date2 != undefined) {
-      d1 = new Date(date1);
-      d2 = new Date(date2);
+    if (date1 == undefined || date2 == undefined) {
+      let year = new Date().getFullYear();
+      date1 = year + '-01-01';
+      date2 = year + '-12-31';
     }
+    d1 = new Date(date1);
+    d2 = new Date(date2);
     times = times.filter(e => {
       let st = new Date(e.date);
       if (st >= d1 && st <= d2) {
@@ -99,8 +99,8 @@ exports.getTotal = (req, res, next) => {
       pageTitle: 'Total Time',
       path: '/total',
       data: data,
-      date1: d1,
-      date2: d2,
+      date1: date1,
+      date2: date2,
       totalHours: totalHours,
       currentPage: page,
       hasNextPage: ITEMS_PER_PAGE * page < totalItems,
@@ -117,15 +117,15 @@ exports.getTotalByEmployee = (req, res, next) => {
   let date2 = req.query.endDate;
   let totalItems = 0
   let data = [];
-  Time.find().populate('userId').exec((err,times) => {
+  Time.find().populate('userId').exec((err, times) => {
     // TODO: this solution is pretty crude
     if (date1 == undefined || date2 == undefined) {
       let year = new Date().getFullYear();
-      date1=year+'-01-01';
-      date2=year+'-12-31';
+      date1 = year + '-01-01';
+      date2 = year + '-12-31';
     }
-    d1=new Date(date1);
-    d2=new Date(date2);
+    d1 = new Date(date1);
+    d2 = new Date(date2);
     times = times.filter(e => {
       let st = new Date(e.date);
       if (st >= d1 && st <= d2) {
@@ -134,15 +134,18 @@ exports.getTotalByEmployee = (req, res, next) => {
         return false;
       }
     });
-    let result=[];
-    times.reduce((res,value)=>{
-      if(!res[value.userId.name]){
-        res[value.userId.name]={name:value.userId.name, duration:0};
+    let result = [];
+    times.reduce((res, value) => {
+      if (!res[value.userId.name]) {
+        res[value.userId.name] = {
+          name: value.userId.name,
+          duration: 0
+        };
         result.push(res[value.userId.name]);
       }
       res[value.userId.name].duration += value.duration;
       return res;
-    },{});
+    }, {});
     times = result;
     totalItems = times.length;
     data = times.slice((page - 1) * ITEMS_PER_PAGE, ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE);

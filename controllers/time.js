@@ -66,51 +66,40 @@ exports.getTotal = (req, res, next) => {
   const page = +req.query.page || 1;
   const date1 = req.query.startDate;
   const date2 = req.query.endDate;
-  let totalItems=0
+  let totalItems = 0
   let totalHours = 0;
-  let data=[];
-  if (date1 != undefined && date2 != undefined) {
-    Time.find({
-      userId: req.user._id
-    }).
-    then(times => {
-      times = times.filter(e => {
-        let d1 = new Date(date1);
-        let d2 = new Date(date2);
-        let st = new Date(e.date);
-        if (st >= d1 && st <= d2) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      times.forEach(a => {
-        totalHours = totalHours + (+a.duration);
-      });
-      totalItems = times.length;
-      data = times.slice((page - 1) * ITEMS_PER_PAGE, ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE);
-      res.render('time/total', {
-        pageTitle: 'Total Time',
-        path: '/total',
-        data: data,
-        date1: date1,
-        date2: date2,
-        totalHours: totalHours,
-        currentPage: page,
-        hasNextPage: ITEMS_PER_PAGE * page < totalItems,
-        hasPreviousPage: page > 1,
-        nextPage: page + 1,
-        previousPage: page - 1,
-        lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE)
-      });
-    })
-  }else{
+  let data = [];
+  
+  Time.find({
+    userId: req.user._id
+  }).
+  then(times => {
+    // TODO: this solution is pretty crude
+    let d1 = new Date('January 1, 2000 00:00:00');
+    let d2 = new Date('January 1, 2099 00:00:00');
+    if (date1 != undefined && date2 != undefined) {
+      d1 = new Date(date1);
+      d2 = new Date(date2);
+    }
+    times = times.filter(e => {
+      let st = new Date(e.date);
+      if (st >= d1 && st <= d2) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    times.forEach(a => {
+      totalHours = totalHours + (+a.duration);
+    });
+    totalItems = times.length;
+    data = times.slice((page - 1) * ITEMS_PER_PAGE, ((page - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE);
     res.render('time/total', {
       pageTitle: 'Total Time',
       path: '/total',
       data: data,
-      date1: date1,
-      date2: date2,
+      date1: d1,
+      date2: d2,
       totalHours: totalHours,
       currentPage: page,
       hasNextPage: ITEMS_PER_PAGE * page < totalItems,
@@ -119,5 +108,5 @@ exports.getTotal = (req, res, next) => {
       previousPage: page - 1,
       lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE)
     });
-  }
+  })
 };

@@ -12,11 +12,7 @@ const userSchema = new Schema({
     required: true
   },
   resetToken: String,
-  resetTokenExpiration: Date,
-  role: {
-    type: String,
-    required: false
-  }
+  resetTokenExpiration: Date
 });
 
 module.exports = mongoose.model('User', userSchema);

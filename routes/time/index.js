@@ -14,6 +14,7 @@ router.post('/card',
   ],
 isAuth, timeController.postCard);
 router.get('/total', isAuth, timeController.getTotal);
+router.get('/totalbyemployee', isAuth, timeController.getTotalByEmployee);
 router.get('/about', timeController.aboutTime);
 //router.get('/card', isAuth, timeController.getCard);
 //router.post('/cart-delete-item', isAuth, shopController.postCartDeleteProduct);

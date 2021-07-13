@@ -7,11 +7,11 @@
           <form action="/time/total" method="GET">
             <div class="mb-3">
               <label for="startDate" class="form-label">Start date</label>
-              <input type="date" class="form-control" name="startDate" id="startDate" value="<%= date1 %>">
+              <input type="date" class="form-control" name="startDate" id="startDate" value="<%= date1.toUTCString() %>">
             </div>
             <div class="mb-3">
               <label for="endDate" class="form-label">End date</label>
-              <input type="date" class="form-control" name="endDate" id="endDate" value="<%= date2 %>">
+              <input type="date" class="form-control" name="endDate" id="endDate" value="<%= date2.toUTCString() %>">
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Search</button> 

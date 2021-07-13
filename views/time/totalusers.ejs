@@ -3,8 +3,8 @@
     <main>
       <div class="container">
         <div class="container-form">
-          <h1> Total Time </h1>
-          <form action="/time/total" method="GET">
+          <h1>Total Time by Employee</h1>
+          <form action="/time/totalbyemployee" method="GET">
             <div class="mb-3">
               <label for="startDate" class="form-label">Start date</label>
               <input type="date" class="form-control" name="startDate" id="startDate" value="<%= date1 %>">
@@ -17,24 +17,19 @@
                 <button type="submit" class="btn btn-primary">Search</button> 
             </div>
           </form>
-          <div class="mb-3">
-            <span>Total hours: <%= totalHours %> </span>
-          </div>
         </div>
         <h3>Details</h3>
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Activity</th>
-                <th scope="col">Date</th>
+                <th scope="col">Employee</th>
                 <th scope="col">Duration</th>
               </tr>
             </thead>
             <tbody>
               <% for (let i=0;i<data.length;i++) {%>
               <tr>
-                <td> <%= data[i].activity %>  </td>
-                <td><%= new Date(data[i].date).toDateString() %></td>
+                <td> <%= data[i].name %>  </td>
                 <td><%= data[i].duration %></td>
               </tr>
               <% } %> 
@@ -43,5 +38,4 @@
           <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage,url:'&startDate='+date1+'&endDate='+date2}) %>
       </div>
     </main>
-
     <%- include('../includes/footer.ejs') %> 

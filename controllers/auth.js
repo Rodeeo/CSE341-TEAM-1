@@ -135,7 +135,7 @@ exports.postSignup = (req, res, next) => {
       pageTitle: 'Signup',
       errorMessage: errors.array()[0].msg,
       oldInput: {
-        name:name,
+        name: name,
         email: email,
         password: password,
         confirmPassword: req.body.confirmPassword
@@ -150,7 +150,7 @@ exports.postSignup = (req, res, next) => {
       const user = new User({
         email: email,
         password: hashedPassword,
-        cart: { items: [] }
+        name: name
       });
       return user.save();
     })

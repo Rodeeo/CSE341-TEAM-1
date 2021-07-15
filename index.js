@@ -5,11 +5,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const cors = require('cors');
 const User = require('./models/user');
+const { config } = require('./config');
+
 
 const corsOptions = {
     origin: "https://https://tiempo-team1.herokuapp.com/",
@@ -18,11 +19,17 @@ const corsOptions = {
 
 const errorController = require('./controllers/error');
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://webadmin:kjfF2foda16U4hAm@cluster0.vhpz6.mongodb.net/tiempo?retryWrites=true&w=majority";
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const DB_NAME = encodeURIComponent(config.dbName);
+const PORT = encodeURIComponent(config.port);
+
+
+const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URL,
+  uri: MONGODB_URI,
   collection: 'sessions'
 });
 const csrfProtection = csrf();
@@ -81,9 +88,12 @@ app.use((error, req, res, next) => {
   });
 });*/
 mongoose
-  .connect(MONGODB_URL,{ useNewUrlParser: true,useUnifiedTopology: true})
+  .connect(MONGODB_URI,{ useNewUrlParser: true,useUnifiedTopology: true})
   .then(result => {
-    app.listen(PORT);
+    app.listen(PORT, () => {
+      console.log(`Listening on ${PORT}`);
+      console.log(`http://127.0.0.1:${PORT}`);
+    });
   })
   .catch(err => {
     console.log(err);

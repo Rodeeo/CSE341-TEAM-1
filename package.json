@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon index.js",
+        "start": "node index.js",
         "start-server": "node index.js"
     },
     "author": "Alain Ramos",
@@ -21,6 +21,7 @@
         "connect-mongodb-session": "^2.0.3",
         "cors": "^2.8.5",
         "csurf": "^1.9.0",
+        "dotenv": "^10.0.0",
         "ejs": "^2.6.1",
         "express": "^4.16.3",
         "express-handlebars": "^3.0.0",

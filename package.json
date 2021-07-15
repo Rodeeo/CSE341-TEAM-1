@@ -8,10 +8,6 @@
     "start": "node index.js",
     "start-server": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rodeeo/CSE341-TEAM-1.git"
-  },
   "author": "Team 1",
   "license": "ISC",
   "bugs": {
@@ -41,6 +37,10 @@
     "nodemon": "^2.0.7",
     "pug": "^2.0.3",
     "sequelize": "^5.0.0-beta.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodeeo/CSE341-TEAM-1.git"
   },
   "keywords": [
     "node",

@@ -12,7 +12,7 @@ This project is a **Web App**.
 * ## **[Click me for Live Demo!](https://tiempo-team1.herokuapp.com)**
 
 ## Running on local
-# Create a **.env** file and complete it as **.env.example** on root directory.
+Create a **.env** file and complete it as **.env.example** on root directory.
 
 ``` bash
 npm i

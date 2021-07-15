@@ -32,6 +32,7 @@ signupHandler = (event) => {
         })
         .then(resData => {
             console.log(resData);
+            window.location.replace('/login');
         })
         .catch(err => {
             console.log(err);

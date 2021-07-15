@@ -24,9 +24,16 @@
             <a class="nav-link" href="about">About</a>
           </li>
         </ul>
+        <% if (false) { %>
+        <div class="text-success" style="max-width: 45rem;">
+          <a href="/login" class="btn-primary">Logout</a>
+       </div>
+       <% } else { %>
         <div class="text-success" style="max-width: 45rem;">
           <a href="/login" class="btn-primary">Login</a>
        </div>
+        
+        <% } %>
       </div>
     </div>
   </nav>

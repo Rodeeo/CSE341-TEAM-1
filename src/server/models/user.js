@@ -34,6 +34,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  timecards: {
+    type: Schema.Types.ObjectId,
+    ref: "Timecard"
+  },
   resetToken: String,
   resetTokenExpiration: Date,
 });

@@ -11,14 +11,9 @@ const { config } = require('../../config');
 
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
-const DB_NAME = config.dbName;
+const DB_NAME = encodeURIComponent(config.dbName);
+const PORT = encodeURIComponent(config.port);
 
-// V This crashes the app for now V
-/* const corsOptions = {
-  origin: "https://tiempo-team1.herokuapp.com/",
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions)); */
 
 const options = {
   useUnifiedTopology: true,
@@ -28,8 +23,7 @@ const options = {
   family: 4,
 };
 
-// const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
-const MONGODB_URI = "mongodb+srv://Bob:Bob123@tiempo-team1.hrin5.mongodb.net/Tiempo-Team1"
+const MONGODB_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
@@ -69,9 +63,9 @@ mongoose
   // Passing options to avoid using deprecated parser
   .connect(MONGODB_URI, options)
   .then((result) => {
-    app.listen(config.port, () => {
-      console.log(`Listening on ${config.port}`);
-      console.log(`http://127.0.0.1:${config.port}`);
+    app.listen(PORT, () => {
+      console.log(`Listening on ${PORT}`);
+      console.log(`http://127.0.0.1:${PORT}`);
     });
   })
   .catch((err) => {
